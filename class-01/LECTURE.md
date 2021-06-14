@@ -46,6 +46,14 @@
 
 Demo: http://github.com/jacobknaack/class-01-demo
 
-* modularity.
+* Modularity:
+  * Node lets us access our file system and bring in dependences we have installed locally
+    * `npm install express` - installing the code in our `node_modules` folder.
+  * We can create our own code dependencies and export them with commonJS syntax:
+    *  `module.exports = class Person {};`
+
+* Tests:
+  * We can validate our code by installing software that allows us to run our code in test environment
+  * We are using `jest` as our test running software, which will look for files saved as tests.
 
 ## Lab 01 / Code Challenge 01
