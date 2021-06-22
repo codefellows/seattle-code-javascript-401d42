@@ -69,4 +69,3 @@ It's clunky for a client to send strings (username / password) with every reques
 ## Extending the User Model
 
 Our user model should contain the functions that authenticate a user, both for authenticating with basic and bearer.
-  * 
