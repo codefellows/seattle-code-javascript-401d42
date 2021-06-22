@@ -30,6 +30,7 @@ describe('User schema', () => {
     expect(user.username).toBeTruthy();
     expect(user.password).toBeTruthy();
     expect(user.password).not.toEqual('test');
+    expect(user.token).toBeTruthy();
 
     let match = await bcrypt.compare('test', user.password);
     expect(match).toBeTruthy();
@@ -39,7 +40,7 @@ describe('User schema', () => {
   test('Should attach a token on find', async (done) => {
 
     let user = await Users.findOne({ where: { username: userInfo.username } });
-    console.log(user);
+
     expect(user.username).toEqual(userInfo.username);
     expect(user.token).toBeTruthy();
     expect(jwt.decode(user.token).username).toEqual(userInfo.username);

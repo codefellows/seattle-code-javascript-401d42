@@ -14,8 +14,7 @@ const app = express();
 const sequelize = new Sequelize(DATABASE_URL);
 const Users = UserSchema(sequelize, DataTypes);
 
-// App Level MW
-app.use(express.static('./public'));
+// App Level Mm
 app.use(express.json());
 
 // echo '{"username":"john","password":"foo"}' | http post :3000/signup
