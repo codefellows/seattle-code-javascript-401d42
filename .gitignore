@@ -4,3 +4,4 @@ bin/
 coverage/
 *lock.json
 memory
+.env
