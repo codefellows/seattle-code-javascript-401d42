@@ -1,0 +1,16 @@
+{
+  "name": "typed-demo",
+  "version": "1.0.0",
+  "main": "body.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "jest --verbose --coverage"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "jest": "^27.0.6"
+  }
+}
