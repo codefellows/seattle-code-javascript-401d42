@@ -16,11 +16,11 @@ class Navigation {
 
   fetch(url) {
     return {
-      url: url
+      url: url,
       response: {
         text: 'loading...',
         data: 'loading...', 
-      }
+      },
     }
   }
 
