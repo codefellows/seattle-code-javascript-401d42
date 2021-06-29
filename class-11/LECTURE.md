@@ -36,5 +36,8 @@ What are Events?
   * Publisher can also be a subscriber.
   * A machine `subscribes` to differenet events, and `publishes` to the same or completely seperate events.
 
+* Let's use the human body as a system for publishing and subscribing to events:
+  * 
+
 
 ## Node Event Emitter / CAPS

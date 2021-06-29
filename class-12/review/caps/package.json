@@ -1,0 +1,23 @@
+{
+  "name": "caps",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --coverage --verbose"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Keian-A/caps.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Keian-A/caps/issues"
+  },
+  "homepage": "https://github.com/Keian-A/caps#readme",
+  "dependencies": {
+    "jest": "^27.0.6"
+  }
+}
