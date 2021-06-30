@@ -66,4 +66,4 @@ See typed-demo/caps
 * What are some shortcomings of our App?
   * Messages sent over our socket server are NOT garaunteed to reach their intended client?
   * Let's build a class that can maintain a `queue` a messages that will be able to add / remove messages when we can confrm they are completed.
-  *  Server is able to "know" when a package was delivered, let's add this feature to our queue.
+  * Server is able to "know" when a package was delivered, let's add this feature to our queue.
