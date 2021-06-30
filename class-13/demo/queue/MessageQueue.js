@@ -15,8 +15,8 @@ class MessageQueue {
     let key = uuid();
     this.messages[key] = payload;
     return {
-      messageId: key,
-      messageValue: payload,
+      id: key,
+      value: payload,
     };
   }
 

@@ -18,8 +18,8 @@ family.on('connection', socket => {
       let chore = chores.add(payload);
       socket.emit('added');
       family.emit('chore', {
-        id: chore.messageId,
-        payload: chore.messageValue
+        id: chore.id,
+        payload: chore.value
       });
     } catch (e) {
       console.error(e);
