@@ -23,8 +23,7 @@ class BinarySearchTree {
     this.root = null;
   }
 }
+```
 
 * What is an algorithm we can follow to find the smallest or largest value in a binary search tree?
 * Write methods on the Binary Search Tree Class that can return he smallest value in the tree, as well as the largest value.
-
-```
