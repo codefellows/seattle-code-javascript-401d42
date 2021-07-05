@@ -1,8 +1,8 @@
-# Warm Up - Minimum and Maximum Values is a Binary Search Tree
+# Warm Up - Minimum and Maximum Values in a Binary Search Tree
 
 ## Overview
 
-A Binary Search Tree is a data structure that organizes it's Nodes into one of two positions, small values on the `left` and large values on the `right` .  Sometimes we need to traverse a tree and find specific values, in this case the smallest or largest value that exists in a the binary search tree.
+A Binary Search Tree is a data structure that organizes it's Nodes into one of two positions, smaller values on the `left` and larger values on the `right` .  Sometimes we need to traverse a tree and find specific values, in this case the smallest or largest value that exists in a the binary search tree.
 
 ## Challenge
 
@@ -26,4 +26,4 @@ class BinarySearchTree {
 ```
 
 * What is an algorithm we can follow to find the smallest or largest value in a binary search tree?
-* Write methods on the Binary Search Tree Class that can return he smallest value in the tree, as well as the largest value.
+* Write methods on the Binary Search Tree Class that can return the smallest value in the tree, as well as the largest value.
