@@ -1,34 +1,30 @@
-# Warm Up - Javascript Basics
+# Warm Up - Minimum and Maximum Values is a Binary Search Tree
 
-## Arrays
+## Overview
 
-- Create an array of numbers, 1 through 10
-- Write a function, called `forLoop` that takes an array as a parameter, runs the array through a `for(...)` loop and does a `console.log()` of each element.
-- Write a function, called `whileLoop` that takes an array as a parameter, runs the array through a `while(...)` loop and does a `console.log()` of each element.
-- Implement `.map()`, `.filter()`, `.reduce()` as regular javascript functions that take in an array as a parameter, but do the same things as the real functions.
+A Binary Search Tree is a data structure that organizes it's Nodes into one of two positions, small values on the `left` and large values on the `right` .  Sometimes we need to traverse a tree and find specific values, in this case the smallest or largest value that exists in a the binary search tree.
 
-## Objects
+## Challenge
 
-- Begin with the starter code below ...
-- Using spread assignment, create a new array called `newPeople`, which is a copy of the `people` array, with a person named 'Odie' added to the beginning and one named 'Garfield' added to the end.
-- Using spread assignment, create a new object called `newStuff`, which is a copy of the `stuff` object, with a new car ("GMC") added to the end of the `cars` array within it
-- Create a `state` object with keys of `people` and `stuff` that contain the `people` and `stuff` data.
-  - Do this using object destructuring assignment
-- Using spread and destructuring assignments, create a new object called `newSate`, repeating the `newPeople` and `newStuff` steps above but directly within the `people` and `stuff` nodes of the state object (don't just spread in newPeople and newStuff)
-- Prove that the original `people`, `stuff`, and `state` are unchanged.
+Create methods that can find both the largest value and the smallest value.  Use the following class to get started:
 
 ```javascript
-const people = ['Kookla','Fran','Ollie'];
-const newPeople = [];
 
-const stuff = {
-  tv: 'huge',
-  radio: 'old',
-  toothbrush: 'frayed',
-  cars: ['Toyota','Mazda']
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+  }
 }
 
-const newStuff = {};
-const state = {};
-const newState = {};
+class BinarySearchTree {
+  constructor() {
+    this.root = null;
+  }
+}
+
+* What is an algorithm we can follow to find the smallest or largest value in a binary search tree?
+* Write methods on the Binary Search Tree Class that can return he smallest value in the tree, as well as the largest value.
+
 ```
