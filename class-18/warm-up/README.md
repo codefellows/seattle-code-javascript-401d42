@@ -1,35 +1,13 @@
-# Warm Up - Modal Dialogue
+# Warm Up - Find the Ancestors of a given Node in a Binary Tree
 
 ## Overview
 
-Modals are a UI tool that are often used on websites to gather attention/information as well as to force the user to take one action, restricting access to other content.
+Trees are used to store all sorts of heirarchical information.  The parents and grand parents of a node might represent some sort of important connection between those values.  So it is sometimes necessary to be able to return a list of all the `ancestors` belonging to a given node value.
 
-![Modal](modal.png)
+The following tree has three seperate `lineages` running through it:
 
-Characteristically, modal dialogue boxes:
-
-- Are centered vertically and horizontally
-- Sit atop an "overlay" which:
-  - Dims out the page content behind the modal
-  - Restricts the user from being able to interact with the page below
-- Have a close mechanism
-  - A button
-  - Pressing `<escape>`
-  - Clicking "outside" of the box
+![tree  anceestors](./tree-ancestors.png)
 
 ## Challenge
 
-Implement a Modal dialogue similar to the example.
-
-- Create a button that opens the modal
-- Add an overlay to the page, with opacity, restricting the user from selecting text or clicking things
-- Set the modal atop the overlay
-- Add a close button to the modal which would hide it
-
-## Notes
-
-Accomplish this purely with CSS, no javascript!
-
-### Stretch Goal
-
-- Using Javascript, handle `<escape>` or clicking outside the modal as a means to close the dialogue
+Create a function that can search the tree for a specific value, if the value is found, return a linked list of all the nodes `ancestors`  that connect that node to the `root` of the tree.
