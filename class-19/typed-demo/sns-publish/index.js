@@ -8,12 +8,9 @@ const sns = new AWS.SNS();
 const topic = 'arn:aws:sns:us-west-2:275199309843:pickup';
 
 const payload = {
-  Message: `{
-    "storeId": 12345,
-    "details": "flowers"
-  }`,
+  Message: `{"name": "Jacob"}`,
   TopicArn: topic,
-};
+}
 
 sns.publish(payload).promise()
   .then(data => {

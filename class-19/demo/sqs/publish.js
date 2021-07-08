@@ -5,7 +5,7 @@ const Producer = require('sqs-producer');
 
 // create simple producer
 const producer = Producer.create({
-  queueUrl: 'https://sqs.us-west-2.amazonaws.com/335083857671/sqs-testing',
+  queueUrl: 'https://sqs.us-west-2.amazonaws.com/275199309843/Packages',
   region: 'us-west-2',
 });
 
