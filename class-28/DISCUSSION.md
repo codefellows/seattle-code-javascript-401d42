@@ -1,4 +1,4 @@
-# Readings: Component Composition
+# Reading: Component Lifecycle / `useEffect()` Hook
 
 Below you will find some reading material, code samples, and some additional resources that support today's topic and the upcoming lecture.
 
@@ -8,17 +8,21 @@ Review the Submission Instructions for guidance on completing and submitting thi
 
 In your reading notes page for this class, provide answers to the following prompts. Cite any external sources
 
-1. Can a parent component access the state of a child component?
-1. What can be passed along in a prop variable?
-1. How can a child component "know" the state of another component?
+1. Why do we not need more .html pages in a multi-page React app?
+1. If we wanted a component to show up on every page, where would we put it and why?
+   - Outside the `<BrowserRouter/>`
+   - Inside the `<BrowserRouter />`, outside a `<Route />`
+   - Inside a `<Route />`
+1. What does routing do with the components that were rendered when a new route is requested
+1. What does props.children contain?
+1. How do `useState()` and `this.setState()` differ?
 
 ### Document the following Vocabulary Terms
 
 | Term                            |
 | ------------------------------- |
-| component props                 |
-| component state                 |
-| application state               |
+| State Hook                      |
+| Mounting and Un-Mounting        |
 
 ## Preview
 
@@ -30,12 +34,4 @@ Skim the following materials in preparation for the upcoming lecture. Note the f
 
 ### Preparation Materials
 
-- [react basics recap](https://medium.freecodecamp.org/these-are-the-concepts-you-should-know-in-react-js-after-you-learn-the-basics-ee1d2f4b8030){:target="_blank"}
-- [props.children](https://codeburst.io/a-quick-intro-to-reacts-props-children-cb3d2fce4891){:target="_blank"}
-- [composition vs inheritance](https://reactjs.org/docs/composition-vs-inheritance.html){:target="_blank"}
-- [react testing library api example](https://testing-library.com/docs/react-testing-library/example-intro){:target="_blank"}
-
-#### Bookmark
-
-- [react-if component](https://www.npmjs.com/package/react-if){:target="_blank"}
-- [react-testing-library-async](https://testing-library.com/docs/dom-testing-library/api-async){:target="_blank"}
+- [effects hook](https://reactjs.org/docs/hooks-effect.html){:target="_blank"}

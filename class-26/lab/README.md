@@ -18,43 +18,23 @@ Refer to the [RESTy System Overview](../../apps-and-libraries/resty/README.md) f
 
 Today, we begin the first of a 4-Phase build of the RESTy application, written in React. In this first phase, our goal is to setup the basic scaffolding of the application, with intent being to add more functionality to the system as we go. This initial build sets up the file structure so that we can progressively build this application in a scalable manner
 
-The following user/developer stories detail the major functionality for this phase of the project.
-
-- As a user, I expect an easy to read and understand user interface so that I can use the application intuitively
-- As a user, I want to enter the URL to a REST API and select the REST method to use to access it
-- As a user, I want visual confirmation that my entries and selections are valid so that I have confidence the application will be able to fetch the API data that I've requested
-
-And as developers, here are the high level development tasks that address the above end user requirements
-
-- Create a visually appealing site with a Header, Footer, and a large content area
-- Create a form that asks for a URL
-- Create buttons that let the user choose from the REST methods (get, post, put, delete)
-- When the form is filled out, and the button is clicked, display the URL and the method chosen
-
 ![Preview](preview.png)
 
 ## Technical Requirements / Notes
 
-Create the RESTy application as follows:
+> The application, as written by our development team was done using class components as a proof of concept. In order to go to production, we're going to have to convert this to an application written using React function components so that our foundation is both stable and high performing.
 
-- Begin with creating your application using `create-react-app`
-- Write an `App` component that serves as the container for all sub-components of this application
-  - The app should import an `.scss` file to serve as the base design for the site
-  - Import and render `Header`, `Footer`, and `Form` components from other files using ES6 `import` syntax
-- The `<Header>` component should use it's own `.scss` file for styling
-- The `<Footer>` component should use it's own `.scss` file for styling
+Refactor the RESTy application as follows:
+
+- Begin with installing and running the application, making note of it's architecture
+- The `App` component serves as the container for all sub-components of this application
+  - Leave this component as a Class
+  - The app imports an `.scss` file to serve as the base design for the site
+  - `Header`, `Footer`, `Results` and `Form` components are imported from other files using ES6 `import` syntax
+- Each of the components use their own `.scss` file for styling
 - The `<Form>` component should:
-  - Use it's own `.scss` file for styling
-  - Accept user input for a URL and store it in state
-  - Allow the user to choose a method and store it in state
-    - This can be done with radio buttons or clickable elements
-  - Display the user's choices on screen in a separate `<div>` or `<section>` under the form
-
-### Stretch Goals
-
-- Don't show the user's choices until the form is submitted
-  - How will you store/use state to achieve this goal?
-- Stylize the method options so the user knows which one has been selected
+  - Call back to the `<App/>` component via function sent down through a prop so that the app can begin the process
+- The `<Results/>` component should show mock API results
 
 ### Assignment Submission Instructions
 

@@ -1,6 +1,8 @@
-# Props and State
+# `useState()` Hook
 
-Applications are comprised of many components, usually working together to perform a higher level task. As such, they'll all need access to state, methods to read/modify state, and an ability to respond to triggered actions in other, related components. Today, we'll explore how React applications do this, using JSX attributes, better known as `props`
+To this point, state has been owned and managed solely in Class based React components, using `this.state` with `this.setState()` and instance methods to manage it all.
+
+Newer versions of React now allow for "function components" to also manage their own state, using a newly exposed API, called "Hooks"
 
 ## Learning Objectives
 
@@ -8,15 +10,15 @@ Applications are comprised of many components, usually working together to perfo
 
 #### Describe and Define
 
-- Functions as properties/attributes
-- State (or parts of state) as properties/attributes
+- Pros/Cons of Functional and Class Components
+- Use of the state hook for functional components
+- Use of the effect hook to tap into the lifecycle
+- Describe the lifecycle of a React component
 
 #### Execute
 
-- Pass props from a container component to a child
-- Execute methods in a parent component from a child
-- Manage state from events
-- Handle form input
+- Use the Hooks API to manage state in a functional component
+- Use an effect hook to manage state at various (tactical) times during the life of a component
 
 ## Today's Outline
 
@@ -24,132 +26,49 @@ Applications are comprised of many components, usually working together to perfo
 
 ## Notes
 
-## Forms and Inputs
+### Hooks
 
-React form elements maintain internal state. Think of React inputs as stateful child components. This means that we must manage the state of inputs through our own stateful component and one way data binding. The creation of a parent component (which we'll refer to as _form-container_), manages the state for all child components of the form and passes any necessary state down into it's inputs through the use of `props`. Each input has an `onChange` event that we can handle and use to update our _form-container's_ state each time the user interacts with an input.
+React hooks allow to to easily create and manage state in a **functional** component.
 
-### Props
+Hooks are JavaScript functions, but they impose additional rules:
 
-Components accept arbitrary inputs called `props`. In JSX, props are passed into a component with a syntax that looks like HTML attributes. These are the equivalent of function params.
+- Hooks must be named with a `use` prefix (i.e. `useFishingPole`)
+- Only call Hooks at the top level. Don't call Hooks inside loops, conditions, or nested functions.
+- Only call Hooks from React function components. Don't call Hooks from regular JavaScript functions. (There is just one other valid place to call Hooks — your own custom Hooks. We'll learn about them in a moment.)
 
-In actuality, `props` is the name of the object passed into a component constructor and any prop added to a component in the JSX will be accessible as a property on `props`.
+#### Built In Hooks
 
-After `props` is passed into the constructors `super` function, they are available on the context by using `this.props`.
+##### `useState()`
 
-#### Props Example ... the way we get to use them
+Returns a stateVariable and setterFunction for you to use to manage state in a functional component
 
-``` javascript
-const element = (
-  <h1 className="greeting">
-    Hello, world!
-  </h1>
-);
-```
+In this example ...
 
-#### Props -- what's actually happening under the hood
+- `clicks` is the state variable, which will store the number of clicks
+- `setClicks` is a function that is called to change the value of clicks
 
-```javascript
+How does this work?
 
-const element = React.createElement(
-  'h1',
-  {className: 'greeting'},
-  'Hello, world!'
-);
-
-```
-
-#### Props can be data or functions
-
-In javascript, we can pass functions around like variables. We've been doing this all along (named callback functions in express and jQuery for example).  Now we get to really harness that power!
-
-When this renders ...
-
-- Foo will draw Bar
-- Bar will draw a button
-- When that button gets clicked, it's `onClick` action fires
-  - That action runs the method `this.props.handleClick`
-  - That method runs in `<Foo>` ... `<Foo>` passed it down to `<Bar>` essentially telling it what it wants it to do.
-- This is a means of passing not only **Data** but **Behavior** down the component tree
-
-``` javascript
-
-class Foo extends React.Component {
-  constructor(props){
-    super(props)
-  }
-
-  screamLoud() {
-    console.log("OUCH");
-  }
-
-  render(){
-    return (
-      <div>
-        <Bar text="Click Me!" handleClick={this.screamLoud} />
-      </div>
-    )
-  }
-}
-
-class Bar extends React.Component {
-
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    <div>
-      <button onClick={this.props.handleClick}>{props.text}</button>
-    </div>
-  }
-
-}
-
-// Render the element ...
-<Foo />
-
-// Outputs:
-
-<button>Click Me!</button>
-```
-
-### One Way Data flow
-
-State can only be passed from parent component to a child component through the use of `props`. This enforces the idea of one way data flow. One way data flow is a way of describing that state can only be passed down the component tree (not up). If a child wants to pass some data to a parent, the parent can pass a function to the child through `props` and the child may invoke that function and pass it data for the parent to manage.
-
-## Deployment - GitHub Pages
-
-1. Add `gh-pages` as a dependency for your application
-1. Add 2 scripts to your package.json:
-
-   ```json
-       "predeploy": "npm run build",
-       "deploy": "gh-pages -d build"
-   ```
-
-1. Create a GitHub Workflow for React, using the template provided
-1. Create a GitHub Personal Token and add that as a secret for the repository.
-   - This is going to be useful for other projects as well.
-
-## Testing - React Testing Library - Basics
-
-Test your application as you expect a user to use it. These are "acceptance" tests, not unit tests!
-
-1. Render your application (or a single component)
-1. Use the RTL "getBy" or "findBy" selectors to identify elements
-1. Use `fireEvent` to simulate clicks, typing, submission of forms
-1. Assert on the results you expect to *SEE*
+- by convention, we use `set` + `statevariable` (camel cased) to name this function
+- `useState()` takes a single param, which is the initial value to assign to the state variable
+- You can call your setter function .. i.e. `setClicks(7)` and the attribute value you call the function with is used as the new value for the state variable.
 
 ```javascript
-import { render, fireEvent, waitFor, screen } from '@testing-library/react'
-import '@testing-library/jest-dom/extend-expect'
-import App from '../app-number.js'
+ import React from 'react';
+ import { useState } from 'react';
 
-test('dynamically updates number', async () => {
-  render(<App />);
-  const input = screen.getByTestId('num');
-  const h1 = screen.getByTestId('output');
-  fireEvent.change(input, { target: { value: 1234 } });
-  expect(h1).toHaveTextContent('1234')
-})
+ function Counter() {
+   const [clicks, setClicks] = useState(0);
+
+   return (
+     <div>
+       <h2>Button has been clicked {clicks} time(s)</h2>
+       <button type="button" onClick={() => setClicks(clicks + 1)}>
+         Update Count
+       </button>
+     </div>
+   );
+ }
+
+ export default Counter;
 ```

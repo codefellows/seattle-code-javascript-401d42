@@ -1,12 +1,12 @@
-# LAB - Props and State
+# LAB - `useState()` Hook
 
-**RESTy Phase 2:** Connect RESTy with APIs, running live requests
+**RESTy Phase 2:** Retrieving User Input and Managing State
 
 ## Before you begin
 
 Refer to *Getting Started*  in the [lab submission instructions](../../../reference/submission-instructions/labs/README.md) for complete setup, configuration, deployment, and submission instructions.
 
-> Continue working in your 'resty' repository, in a branch called 'props-and-state'
+> Continue working in your 'resty' repository, extending your previous work in a new branch called 'state'
 
 ## Business Requirements
 
@@ -14,12 +14,12 @@ Refer to the [RESTy System Overview](../../apps-and-libraries/resty/README.md) f
 
 ## Phase 2 Requirements
 
-In phase 2, we will be connecting RESTy to live APIs, fetching and displaying remote data. Our primary focus will be to service *GET* requests
+In phase 2, we will be receiving user input in preparation of connecting to live APIs, using the `useState()` hook in our functional components
 
 The following user stories detail the major functionality for this phase of the project.
 
-- As a user, I want to enter the URL to an API and issue a GET request so that I can retrieve it's data
-- As a user, I want to see the results returned from an API request in my browser in a readable format
+- As a user, I want to enter the REST Method and URL to an API
+- As a user, I want to see a summary of my request as well as results returned from an API request in my browser in a readable format
 
 Application Flow:
 
@@ -36,20 +36,27 @@ Application Flow:
 
 ## Technical Requirements / Note
 
+> It is not a requirement to make the actual API call. That can be mocked with "fake" data
+
 Suggested Component Hierarchy and Application Architecture:
 
 - `index.js` - Entry Point
-- `app.js` - Container
-  - Holds state: Count and Results Array
+- `App.js` - Container
+  - Holds application state: The Request (from the form) and the Response (from the API)
   - A class method that can update state
   - Renders 2 Child Components
 - `<Form />`
   - Expects a function to be sent to it as a prop
   - Renders a URL entry form
   - A selection of REST methods to choose from ("get" should be the default)
+    - The active selection should be displayed/styled differently than the others
+  - Renders a Textarea to allow the user to type in a JSON object for a POST or PUT request
   - On submit
-    - Send the API results back to the `<App>` using the method sent down in props
+    - Send the Form entries back to the `<App>` using the method sent down in props
+    - Form will run the API request
+      - Toggle the "loading" status before and after the request
 - `<Results />`
+  - Conditionally renders "Loading" or the data depending on the status of the request
   - Expects the count, headers, results to be sent in as props
   - Renders the count
   - Renders the Result Headers as "pretty" JSON
@@ -59,6 +66,7 @@ Suggested Component Hierarchy and Application Architecture:
 
 - Install the React Testing Library framework
 - Assert that upon submitting the form will result in data being rendered in the output area
+- Install the GitHub action that will auto-run your tests on all check-ins
 
 ## Deployment
 
@@ -66,14 +74,7 @@ Deploy your application to GitHub pages using a GitHub action which will publish
 
 ## Stretch Goals
 
-Add support for all REST methods
-
-- **GET** a single record by ID
-- **DELETE** a single record by ID
-- **PUT** a single record by ID
-  - Requires the addition of a text area where you can type in the JSON body for the update
-- **POST** to create a new record
-  - Requires the addition of a text area where you can type in the JSON body for the new record
+Connect the App component to an API and make an actual call (focusing on GET) to the URL requested in the form
 
 ## Assignment Submission Instructions
 

@@ -1,6 +1,6 @@
-# Routing
+# Advanced State with Reducers
 
-Apps written using a component framework such as React are generally composed of many components, assembled hierarchically to create a cohesive application. Components very often need to share state(data) and behaviors (methods). In addition to props and state, components can actually render other components as their children.
+State is often more complex than simply updating a value directly. Often, we need to update values conditionally. Additionally, state might be more complex than a single value. In these cases, where we need more articulated access, we can use a "reducer" which allows us to interact with state using a common API
 
 ## Learning Objectives
 
@@ -8,16 +8,13 @@ Apps written using a component framework such as React are generally composed of
 
 #### Describe and Define
 
-- `props.children`
-- Composition vs Iteration
-- Routing to swap content
-- Routing to change page
+- Reducers
+- Actions
+- Dispatching
 
 #### Execute
 
-- Implement React Routing via `<BrowserRouter />`
-  - Page Level
-  - Component Swapping
+- Manage state using a reducer with the `useReducer()` hook in a functional component
 
 ## Today's Outline
 
@@ -25,66 +22,93 @@ Apps written using a component framework such as React are generally composed of
 
 ## Notes
 
-### BrowserRouter
+### `useReducer()`
 
-What is a route? It begins as a URL with some path:
+There are 4 things to consider when using the reducer pattern to manage state
 
-- An "about" route: `http://yourdomain.com/about`
-- A "contact" route: `http://yourdomain.com/contact`
+#### 1. Initial State
 
-Given that path, we'll want to show different content. In a traditional website, that means a different HTML page. In React, it means rendering a different component.
-
-#### Wiring: The application
-
-Begin by wrapping your application in an instance of BrowserRouter. This will enable all of your components to link to routes and to conditionally render based on the route
+Simply put, this is a variable that describes your state before the app starts. This can be a simple as a single variable or it can be an array, object, or any combination. For example:
 
 ```javascript
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
+const initialState = {
+  show: "Sesame Street",
+  characters: [
+    {name: "Ernie", color: "orange" },
+    {name: "Burt", color: "yellow" }
+  ]
+};
+```
 
-import App from './components/app.js';
+#### 2. Actions
 
-class Main extends React.Component {
-  render() {
-    return (
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    );
+Describe what action you want to take with your state, as well as any additional data or information that might help complete that action. Think of actions as a consistent way to call a function.
+
+Actions are always plain objects with 2 keys: `type` and `payload`
+
+The "type" must match a handler in the reducer function...
+
+```json
+{
+  type: 'ADD_CHARACTER'
+  payload: { name: "Cookie Monster", color: "blue", age: 57 }
+}
+```
+
+#### 3. Reducer Function
+
+The reducer function, much like `Array.reduce()` operates by accepting the previous state along with some data, performs an action, and **returns the next state**.
+
+We default it to seeing the initial state which would be the case for the first time your application starts.
+
+The reducer looks at the action, and based on the `type` property, it uses a `swithc/case` statement to do the handle change to state, and then returns the changed state.
+
+> Note: We don't change the state (it's immutable). Rather, we return what the next state should be. A common pattern will see is the use of the spread operator (`...`) with the state object as we return the next state without mutating the original.
+
+In this example, to "add" a character, we spread out state (makes a copy) and further spread out the characters and append one. Can you describe how "remove" works?
+
+```javascript
+function characterReducer( state=initialState, action ) {
+
+  switch( action.type ) {
+    case 'ADD_CHARACTER':
+      return { ...state, characters: [...state.characters, action.payload] };
+    case 'REMOVE_CHARACTER':
+      return {...state, characters: state.characters.filter( char => char.name !== payload.name ) }
+    default:
+      return state;
   }
 }
-
-...
 ```
 
-#### Wiring: Linking to different "routes"
+#### 4. Dispatching Actions
 
-`import { Route } from 'react-router-dom';`
+Given an initial state, the shape of what an action looks like, and a reducer function that could run your action, how do you actually do it?
 
-To use Browser Router properly, you eliminate your use of `<a>` tags and instead use it's built-in `<Link>` component.
+You might think that running something like this would do it `let newState =  reducer(state, myAction);`
+
+Technically, that's what needs to happen, but you don't have permission to do that in react. Rather, we **dispatch the action** we want to run, using the `useReducer()` hook and "dispatch" the action you want to run. React knows how to hook it all together and update the component's state.
 
 ```javascript
-<Link to="/">Home</Link>
-<Link to="/stuff">Stuff</Link>
+  function myComponent(props) {
+
+    // This identifies your reducer function and "runs it" the first time, using your initial state
+    const [state, dispatch] = useReducer(characterReducer, initialState);
+
+    // Later, when you want to add
+    function addCharacter() {
+
+      const character = { name: "Elmo", color: "red" };
+
+      // What we want the reducer to do ....
+      const action = {
+        type: "ADD_CHARACTER",
+        payload: character
+      };
+
+      // Make the reducer do it ...
+      dispatch(action);
+    }
+  }
+
 ```
-
-#### Wiring: Showing the right component based on the /route
-
-In practice, then, use the router component anywhere you like to look at either `/about` or `/contact` in the URL and based on that, displaying either the `About` or the `Contact` component
-
-```javascript
- <Route exact path="/about" component={About} />
- <Route exact path="/contact" render={() => <Contact>{items}</Contact>} />
-```
-
-### Testing Note - Queries
-
-- [React Testing Library Queries](https://testing-library.com/docs/dom-testing-library/api-queries)
-- [Aria Roles](https://www.w3.org/TR/html-aria/)
-
-Have you noticed that RTL Makes it very hard/impossible to target elements by ID or Class. Why?
-
-They are trying to force you down a visual road (by evaluating text) or more explicitly, to use Accessibility structure, such as **aria roles** and **labels**
-
-As you change your JSX to make your tests work, you'll find that your HTML is naturally more semantic and accessible

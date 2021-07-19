@@ -1,0 +1,10 @@
+$headerBackground: darkblue;
+$logoColor: #61dafb;
+
+@mixin spacing($spaceAround: 30px) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: $spaceAround;
+}

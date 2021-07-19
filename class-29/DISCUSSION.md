@@ -1,4 +1,4 @@
-# Readings: Routing
+# Reading: Advanced State with Reducers
 
 Below you will find some reading material, code samples, and some additional resources that support today's topic and the upcoming lecture.
 
@@ -8,24 +8,16 @@ Review the Submission Instructions for guidance on completing and submitting thi
 
 In your reading notes page for this class, provide answers to the following prompts. Cite any external sources
 
-1. Do child components have direct access to props/state from the parent?
-1. When a component "wraps" another component, how does the child component's output get rendered?
-
-   ```react
-   <Main>
-     <Content />
-   </Main>
-   ```
-
-1. Can a component, such as `<Content />`, which is a child also be used as a standalone component elsewhere in the application?
-1. What trick can a parent use to share all `props` with it's children
+1. How can we ensure that an effect hook runs only once?
+1. Can `useState()` update more than one state variable at the same time?
+1. Is `useState()` synchronous?
 
 ### Document the following Vocabulary Terms
 
 | Term                            |
 | ------------------------------- |
-| props.children                  |
-| composition                     |
+| State Hook                      |
+| Component Lifecycle             |
 
 ## Preview
 
@@ -37,11 +29,5 @@ Skim the following materials in preparation for the upcoming lecture. Note the f
 
 ### Preparation Materials
 
-- [browser router tutorial](https://blog.pshrmn.com/entry/simple-react-router-v4-tutorial/){:target="_blank"}
-- [browser router api docs](https://reacttraining.com/react-router/web/api){:target="_blank"}
-
-#### Bookmark
-
-- [react-if component](https://www.npmjs.com/package/react-if){:target="_blank"}
-- [react testing library queries](https://testing-library.com/docs/dom-testing-library/api-queries)
-- [aria roles](https://www.w3.org/TR/html-aria/)
+- [useReducer hook](https://reactjs.org/docs/hooks-reference.html#usereducer){:target="_blank"}
+- [Ultimate Guide to useReducer](https://blog.logrocket.com/guide-to-react-usereducer-hook/){:target="_blank"}
