@@ -25,6 +25,8 @@
       * SCSS linting errors, from React.
         * need 'node-sass' in dependencies.
 
+### Review Repo: https://github.com/JacobKnaack/lab26-review
+
 ## `useState` and functional component state
 
 * See typed demo.
