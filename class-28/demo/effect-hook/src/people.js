@@ -12,7 +12,7 @@ function People(props) {
   const _addPerson = (e) => {
     e.preventDefault();
     e.target.reset();
-    name && setPeople([...people, name])
+    name && setPeople([...people, name]);
   }
 
   // This runs on EVERY re-render of this component
@@ -23,7 +23,7 @@ function People(props) {
   // This runs only when the name changes
   useEffect(() => {
     console.log('NAME CHANGED TO:', name);
-  }, [name])
+  }, [name]);
 
   // This runs only when the form is submitted (name added)
   // (this could be a good use case for a PUT or a POST to an API...)
@@ -45,8 +45,8 @@ function People(props) {
   useEffect(() => {
     return (() => {
       console.log('COMPONENT UNMOUNTED');
-    })
-  })
+    });
+  });
 
   return (
     <div>
