@@ -2,7 +2,7 @@
 
 ## Learning Objectives
 
-### Data Structure: <!-- TBD: Fill In Name -->
+### Data Structure: Hash Tables
 
 - Implement
 - Document
@@ -10,8 +10,10 @@
 
 ### Career Coaching Workshop
 
-<!-- Summary To Be Completed By Instructor -->
+CCW 5: the Behavioral interview
 
 ## Today's Outline
 
-<!-- To Be Completed By Instructor -->
+9:00AM : Career Coaching Workshop with Dr. Robin Apparicio.
+
+2:00PM : Data Structure overview of Hash Tables.
