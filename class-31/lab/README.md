@@ -1,16 +1,18 @@
-# LAB - Hooks API
+# LAB - Context API
 
-**To Do List Manager Phase 1:** Begin the build of an application designed for creating and organizing a "To Do" list in your browser.
+**To Do List Manager Phase 1:** Incorporate configuration settings to the application
 
-In this initial phase, we're going to have to start by converting a legacy application into a more modern architecture. Our initial "Proof of Concept" was written using class based components and was not properly styled. Now that our client has given us the "green light" for development, we're going to refactor the application using Hooks and upgrading the style.
+In this phase, we'll be adding some top-level settings for the application, so that the user can make some display choices that the app will use by default.
 
 ## Before you begin
 
 Refer to *Getting Started*  in the [lab submission instructions](../../../reference/submission-instructions/labs/README.md) for complete setup, configuration, deployment, and submission instructions.
 
-Analyze the provided `starter_code` and create a UML diagram of the **To Do** app on a whiteboard before you start the conversion process
+1. Create a new GitHub Repository named `todo-app`
+1. Clone this to your machine
+1. Copy the contents of the `starter-code` folder from the class repository for today
 
-> Create a new repository for this project, called `todo` and work in a branch called `hooks`.
+> Create and work in a new branch for today called 'context-settings'
 
 ## Business Requirements
 
@@ -18,38 +20,56 @@ Refer to the [To Do System Overview](../../apps-and-libraries/todo/README.md) fo
 
 ## Phase 1 Requirements
 
-Today, we begin the first of a 4-phase build of the To Do List Manager, a web-based task manager application, written in React. In this first phase, our goal is to setup a foundational system using React hooks that we can build upon in later phases, adding databases, logins, and more advanced features.
+In Phase 1, we're going to perform some refactoring of the To Do application as built by another team. This application mixes application state and user settings at the top level and passes things around. It was a good proof of concept, but we need to make this production ready.
 
-The following user/developer stories detail the major functionality for this phase of the project.
+- Style the application using the [Blueprint Component API](https://blueprintjs.com/docs/#blueprint){target:_blank}
 
-- As a user, I would like an easy way to add a new to do item using an online interface
-- As a user, I would like my to do items to have an assignee, due date, difficulty meter, status and the task itself
-- As a user, I would like to delete to do items that are no longer needed
-- As a user, I would like to easily mark to do items as completed
-- As a user, I would like to edit an existing to do item
+- Properly modularize the application into separate components
+
+- Implement the Context API to make some basic application settings available to components
+  - How many To Do Items to show at once
+  - Whether or not to show completed items
+
+![To Do with Pagination](todo.png)
 
 ## Technical Requirements / Notes
 
-> You've been provided "starter code" for this phase. Copy the starter code folder contents into your repository to use as your starting point for the application. We'll be refactoring this to fulfill the requirements.
+Based on global configuration
 
-- Convert the architecture from **Class Based Components** into **Functional Components**
-- Apply styling and layout using React Bootstrap Components
-- Ensure the current functionality works unchanged
-- Manage state using the `useState()` hook
-- Use a `useEffect()` hook to change the title of the browser with the complete/incomplete counts
-- Use a `useEffect()` hook to pre-load the seeded To Do Items
-- Match the provided mockup for the design
-  - Use `react-bootstrap` components and theming
-  - Some interactivity notes:
-    - Each item in list should show the text of the item as well as the assignee
-    - When clicked, toggle the "complete" status of the item.
-    - Items should be styled differently when complete/incomplete making their status visually obvious
+- Show a maximum of a certain number of items per screen in the `<List />` component
+  - Provide "next" and "previous" links to let the users navigate a long list of items
+- Hide or show completed items in the list
+- Optional: Sort the items based on any of the keys (i.e. difficulty)
 
-![TODO](todo.png)
+Implement this using `context`
+
+- Create a `context` for managing application display settings and provide this at the application level
+  - Display or Hide completed items (boolean)
+  - Number of items to display per screen (number)
+  - Default sort field (string)
+  - Manually set (hard code) those state settings in the context provider's state, they should not be changeable
+
+Pagination Notes:
+
+- Only display the first `n` items in the list, where `n` is the number to display per screen in your context.
+  - If you have more than `n` items in the list, add a button labeled `Next` that will replace the list with the next `n` items in the list.
+  - If you are past the first `n` items (i.e. on page 2 or higher), add a button labeled `Previous` that will replace the list with the previous `n` items in the list.
+
+### Stretch Goals
+
+- Convert all components from classes to functions
+- In your Context, read the settings in from an object in Local Storage and use that as the initial state
 
 ### Testing
 
 - Tests should assert all behavioral functionality
+- Do a deep mount of the app, and set tests to make assertions on the child components that consume context from the Provider.
+  - Can they see context?
+
+### Documentation
+
+- Describe how global state is consumed by the components
+- Describe the operation of the hook: `useForm()`
 
 ### Assignment Submission Instructions
 

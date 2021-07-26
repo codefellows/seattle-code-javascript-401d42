@@ -1,34 +1,31 @@
-# Warm Up - Javascript Basics
+# Warm Up - Rotators
 
-## Arrays
+Rotators / Carousels are a classic on modern websites. Often used in the "Hero" portion of the website for big bold calls to action, they're also quite useful on mobile to give the users a "swipe" interface to go through items in a familiar UX
 
-- Create an array of numbers, 1 through 10
-- Write a function, called `forLoop` that takes an array as a parameter, runs the array through a `for(...)` loop and does a `console.log()` of each element.
-- Write a function, called `whileLoop` that takes an array as a parameter, runs the array through a `while(...)` loop and does a `console.log()` of each element.
-- Implement `.map()`, `.filter()`, `.reduce()` as regular javascript functions that take in an array as a parameter, but do the same things as the real functions.
+## Overview
 
-## Objects
+A rotator, or carousel is generally thought of as a series of `<img >` or `<div >` that show/hide in some sort of order, allowing the user to change between them,  generally with either a call to action button or being entirely click-able.
 
-- Begin with the starter code below ...
-- Using spread assignment, create a new array called `newPeople`, which is a copy of the `people` array, with a person named 'Odie' added to the beginning and one named 'Garfield' added to the end.
-- Using spread assignment, create a new object called `newStuff`, which is a copy of the `stuff` object, with a new car ("GMC") added to the end of the `cars` array within it
-- Create a `state` object with keys of `people` and `stuff` that contain the `people` and `stuff` data.
-  - Do this using object destructuring assignment
-- Using spread and destructuring assignments, create a new object called `newSate`, repeating the `newPeople` and `newStuff` steps above but directly within the `people` and `stuff` nodes of the state object (don't just spread in newPeople and newStuff)
-- Prove that the original `people`, `stuff`, and `state` are unchanged.
+For this challenge, we're going to create a carousel using **cards** for each "slide" and a **deck** as the container
 
-```javascript
-const people = ['Kookla','Fran','Ollie'];
-const newPeople = [];
+Rotator Example
 
-const stuff = {
-  tv: 'huge',
-  radio: 'old',
-  toothbrush: 'frayed',
-  cars: ['Toyota','Mazda']
-}
+![Carousel](carousel.gif)
 
-const newStuff = {};
-const state = {};
-const newState = {};
-```
+Tabs
+
+![Tabs](tabs.gif)
+
+## Challenge
+
+Create a carousel similar to the one above
+
+- Use Cards and Decks
+- The `.deck` is an element that wraps a list of cards
+- Apply a class of `rotator`to the deck to achieve the desired UI
+- Each `.card` is the content shown as it "rotates" or "slides in"
+- Cards should either have a button to click or be entirely clickable
+  - Perhaps, a class on the card (as previously built) can inform this
+
+> Can you do this entirely with CSS?
+> If you need Javascript, use as little as possible, and use VanillaJS, not jQuery

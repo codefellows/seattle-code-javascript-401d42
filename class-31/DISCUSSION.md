@@ -1,4 +1,4 @@
-# Reading: Hooks API
+# Reading: Context API
 
 Below you will find some reading material, code samples, and some additional resources that support today's topic and the upcoming lecture.
 
@@ -8,21 +8,17 @@ Review the Submission Instructions for guidance on completing and submitting thi
 
 In your reading notes page for this class, provide answers to the following prompts. Cite any external sources
 
-1. Why do we not need more .html pages in a multi-page React app?
-1. If we wanted a component to show up on every page, where would we put it and why?
-   - Outside the `<BrowserRouter/>`
-   - Inside the `<BrowserRouter />`, outside a `<Route />`
-   - Inside a `<Route />`
-1. What does props.children contain?
+1. Describe use cases `useState()` vs `useReducer()`
+1. Why do custom hooks need the use prefix?
+1. What do custom hooks usually do?
+1. Using any list of custom hooks, research and name one that you think will be useful in your applications
+1. Describe how a hook that fetches API data might work
 
 ### Document the following Vocabulary Terms
 
 | Term                            |
 | ------------------------------- |
-| Composition                     |
-| Children / Child Components     |
-| Hash Routing                    |
-| Link Routing                    |
+| reducer                         |
 
 ## Preview
 
@@ -34,8 +30,6 @@ Skim the following materials in preparation for the upcoming lecture. Note the f
 
 ### Preparation Materials
 
-- [making sense of hooks](https://medium.com/@dan_abramov/making-sense-of-react-hooks-fdbde8803889){:target="_blank"}
-- [the state hook](https://reactjs.org/docs/hooks-state.html){:target="_blank"}
-- [hooks api](https://reactjs.org/docs/hooks-overview.html){:target="_blank"}
-- [hooks api reference](https://reactjs.org/docs/hooks-reference.html){:target="_blank"}
-- [effects hook](https://reactjs.org/docs/hooks-effect.html){:target="_blank"}
+- [context api](https://reactjs.org/docs/context.html){:target="_blank"}
+- [hooks and context example](https://medium.com/swlh/snackbars-in-react-an-exercise-in-hooks-and-context-299b43fd2a2b){:target="_blank"}
+- [react context links](https://github.com/diegohaz/awesome-react-context){:target="_blank"}
