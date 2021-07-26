@@ -1,31 +1,30 @@
-# Warm Up - Rotators
+# Warm Up - Tables
 
-Rotators / Carousels are a classic on modern websites. Often used in the "Hero" portion of the website for big bold calls to action, they're also quite useful on mobile to give the users a "swipe" interface to go through items in a familiar UX
+Tables are a staple of HTML for showing tabular data. Out of the box, they don't look great, and are impossible to make "responsive"
 
 ## Overview
 
-A rotator, or carousel is generally thought of as a series of `<img >` or `<div >` that show/hide in some sort of order, allowing the user to change between them,  generally with either a call to action button or being entirely click-able.
+> HTML will always show all of the columns, and compress the content
 
-For this challenge, we're going to create a carousel using **cards** for each "slide" and a **deck** as the container
+For this reason, more modern websites are using CSS `grid` and `display:table` to get the look of a table, but also have options as far as being responsive is concerned
 
-Rotator Example
+![Tables](table.gif)
 
-![Carousel](carousel.gif)
+## Challenge 1: Table Styling
 
-Tabs
+- Style a standard HTML table with all of the requisite parts to look modern
+  - `<table>`
+    - `<thead>`
+      - `<tr> ... <th>`
+    - `<tbody>`
+      - `<tr> ... <td>`
+    - `<tfoot>`
+      - `<tr> ... <td>`
 
-![Tabs](tabs.gif)
+## Challenge 2: Responsive Table
 
-## Challenge
+- Keeping your look, based on your style rules above, refactor your `<table />` to be responsive
+- The example above is one possible way to make a table look good at smaller resolutions
+- Do some looking around for other options, and create an implementation
 
-Create a carousel similar to the one above
-
-- Use Cards and Decks
-- The `.deck` is an element that wraps a list of cards
-- Apply a class of `rotator`to the deck to achieve the desired UI
-- Each `.card` is the content shown as it "rotates" or "slides in"
-- Cards should either have a button to click or be entirely clickable
-  - Perhaps, a class on the card (as previously built) can inform this
-
-> Can you do this entirely with CSS?
-> If you need Javascript, use as little as possible, and use VanillaJS, not jQuery
+> Can you make many options/classes for responsive tables and easily switch between them based on a class name?

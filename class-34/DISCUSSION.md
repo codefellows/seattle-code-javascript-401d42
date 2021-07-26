@@ -1,4 +1,4 @@
-# Reading: `<Login />` and `<Auth />`
+# Reading: API Integration
 
 Below you will find some reading material, code samples, and some additional resources that support today's topic and the upcoming lecture.
 
@@ -8,19 +8,16 @@ Review the Submission Instructions for guidance on completing and submitting thi
 
 In your reading notes page for this class, provide answers to the following prompts. Cite any external sources
 
-1. Why is the Context API useful?
-1. Can a component outside of a provider get its context?
-1. What are some common use cases for using the Context API?
-1. Describe "Context Hell"
+1. How do bearer tokens work?
+1. Describe express middleware
+1. What is a JWT?
 
 ### Document the following Vocabulary Terms
 
 | Term                            |
 | ------------------------------- |
-| global state                    |
-| global context                  |
-| provider                        |
-| consumer                        |
+| role based access control       |
+| http cookies                    |
 
 ## Preview
 
@@ -31,7 +28,3 @@ Skim the following materials in preparation for the upcoming lecture. Note the f
 1. What are you most excited about trying to implement or see how it works?
 
 ### Preparation Materials
-
-- [what is role based access control?](https://digitalguardian.com/blog/what-role-based-access-control-rbac-examples-benefits-and-more){:target="_blank"}
-- [react-cookies component](https://www.npmjs.com/package/react-cookies){:target="_blank"}
-- [react-cookie library](https://www.npmjs.com/package/react-cookie){:target="_blank"}

@@ -1,14 +1,16 @@
-# Warm Up - Revealing Content
+# Warm Up - Rotators
 
-Accordions and Tabs are a design pattern that make excellent use of confined spaces, while allowing the user to use a UI that they intuitively understand.
+Rotators / Carousels are a classic on modern websites. Often used in the "Hero" portion of the website for big bold calls to action, they're also quite useful on mobile to give the users a "swipe" interface to go through items in a familiar UX
 
 ## Overview
 
-Accordions and Tabs are very similar in that they present a list of links (Titles) that, when clicked, will reveal the content associated
+A rotator, or carousel is generally thought of as a series of `<img >` or `<div >` that show/hide in some sort of order, allowing the user to change between them,  generally with either a call to action button or being entirely click-able.
 
-Accordion
+For this challenge, we're going to create a carousel using **cards** for each "slide" and a **deck** as the container
 
-![Accordion](accordion.gif)
+Rotator Example
+
+![Carousel](carousel.gif)
 
 Tabs
 
@@ -16,13 +18,14 @@ Tabs
 
 ## Challenge
 
-Create both an Accordion and Tab interface, similar to the examples above.
+Create a carousel similar to the one above
 
 - Use Cards and Decks
 - The `.deck` is an element that wraps a list of cards
-- Apply classes of `accordion` or `tabs` to the deck to achieve the desired UI
-- Each `.card` is the content shown when a given title is clicked
+- Apply a class of `rotator`to the deck to achieve the desired UI
+- Each `.card` is the content shown as it "rotates" or "slides in"
+- Cards should either have a button to click or be entirely clickable
+  - Perhaps, a class on the card (as previously built) can inform this
 
-> What is the source of the titles for the accordion/tabs?
-> You could try and pull them from the cards, or you could have a separate nav for your deck.
-> What are the pros and cons?
+> Can you do this entirely with CSS?
+> If you need Javascript, use as little as possible, and use VanillaJS, not jQuery

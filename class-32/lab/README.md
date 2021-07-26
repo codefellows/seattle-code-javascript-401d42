@@ -1,14 +1,15 @@
-# LAB - Custom Hooks
+# LAB: Context API - Behaviors
 
-**To Do List Manager Phase 2:** Connecting the To Do Application to an external API and Database
+**To Do List Manager Phase 2:** Incorporate configuration settings to the application
 
-In this phase, we'll be connecting our application to an API so that our list will be saved permanently. This will require a working and deployed API server with a proper "To Do" data model and appropriate REST routes
+In this phase, we'll be adding an editor so that users can save their preferences for the application, allowing them to change some of the default behaviors
 
 ## Before you begin
 
 Refer to *Getting Started*  in the [lab submission instructions](../../../reference/submission-instructions/labs/README.md) for complete setup, configuration, deployment, and submission instructions.
 
-> Building off of your previous day's branch, create a new branch for today called 'custom-hooks' and continue to work in your 'todo' repository.
+1. Continue to work in your GitHub Repository named `todo-app`
+1. Create and work in a new branch for today called 'context-methods'
 
 ## Business Requirements
 
@@ -16,59 +17,56 @@ Refer to the [To Do System Overview](../../apps-and-libraries/todo/README.md) fo
 
 ## Phase 2 Requirements
 
-In Phase 2, we're going to connect the To Do Manager to a deployed API, backed by a database. The core functionality and stories do not change (reference Phase 1), but a new one has been added to note this shift in persistence.
+In Phase 2, we're going to extend the functionality of our application by allowing the user to make some decisions on how they would like the application to function. Specifically, we'll let them make changes to 2 settings.
 
-- As a user, I would like to be able to add, update, and delete To Do items
-- As a user, I would like my To Do Items to be permanently stored so that I can re-access them at any time, using any device
+- Implement the Context API to make some basic application settings available to components
+  - How many To Do Items to show at once
+  - Whether or not to show completed items
+- Provide the users with a form where they can change the values for those settings
+  - This should be given in the form of a new component, perhaps linked to from the main navigation
+  - *Hint: Use Browser Router to create the page/route/component for this*
+- Save the users choices in Local Storage
+- Retrieve their preferences from Local Storage and apply them to the application on startup
 
-Note that the display of each To Do item has changed slightly.
-
-![To Do Application](todo.png)
+![To Do with Pagination](todo.png)
 
 ## Technical Requirements / Notes
 
-Technical requirements for the core application are unchanged from **Phase 1**, with the following exceptions and notes:
+Technical requirements for the core application are unchanged from the prior phases, with the following additions and notes:
 
-Workflow changes:
+Based on global configuration
 
-- On application start, display all of the to do items from the API/Database
-- When **adding** an item, issue a `POST` request to the API server
-- When **marking items complete**, issue a `PUT` request to the API server for the item
-- When **deleting** items, issue a `DELETE` request to the API server for the item
+- Show a maximum of a certain number of items per screen in the `<List />` component
+  - Provide "next" and "previous" links to let the users navigate a long list of items
+- Hide or show completed items in the list
+- Optional: Sort the items based on any of the keys (i.e. difficulty)
 
-Implementation Requirements
+Implement this using `context`
 
-- Design Requirement
-  - Follow the included mockup
-  - Implement using [React Bootstrap Components](https://react-bootstrap.github.io/), not your own bespoke markup/css
-- API
-  - You have previously built a working, and deployed API server that handles data models such as `categories` and `products`
-  - Add a new data model for "To Do" items as noted in the Business Requirements document, and deploy it to Heroku
+- Create a `context` for managing application settings and provide this at the application level
+- Display or Hide completed items (boolean)
+- Number of items to display per screen (number)
+- Default sort field (string)
+- Create a function in your context that saves user preferences (for the above) to local storage
+- Implement a `useEffect()` (or `componentDidMount()`) in your context to read from local storage and set the values for those 2 state properties on application load
 
-- Hooks:
-  - Use the `useEffect()` hook to pre-load the To Do Items from the API on application start
-  - Replace the current form change/submit handlers with the `useForm()` custom hook to manage the "Add Item" form
-  - Create a new custom hook called `useAjax()` to abstract the API calls
-    - Using this hook in your component should make the calls to the server
-    - This hook should:
-      - Accept the URL to the API server, the REST method, and (when relevant) the BODY (JSON) of the request
-      - Handle CORS Settings, Content-Type, Headers and possibly authentication
-      - You should use `axios` to perform the actual AJAX calls
+> Note: You will need to `stringify` your state prior to saving to local storage, and parse it when you retrieve it.
 
-> TIP: Before you write the `useAjax()` hook, get the application connected to and using your deployed api, with `axios` in your event handlers. **Once you have it working end to end**, migrate that same logic into using a hook. You'll find that writing the hook will require the use of effects and some event-driven thinking (with state) to operate. Here's a [great article](https://medium.com/swlh/usefetch-a-custom-react-hook-36d5f5819d8) to get you started
+Pagination Notes:
 
-### Stretch Goals
+- Only display the first `n` items in the list, where `n` is the number to display per screen in your context.
+  - If you have more than `n` items in the list, add a button labeled `Next` that will replace the list with the next `n` items in the list.
+  - If you are past the first `n` items (i.e. on page 2 or higher), add a button labeled `Previous` that will replace the list with the previous `n` items in the list.
 
-- Allow the user to dynamically sort to do items by date, difficulty, or assignee
-- Allow the user to filter to do items by date, difficulty, or assignee
-- Implement a 3rd party form hook instead of the custom one we wrote
-- Implement a 3rd party ajax/fetch hook instead of the custom one you wrote for lab
+### Stretch Goal:
 
-> Why would we have you build custom hooks only to make it a stretch goal to replace them? Implementing 3rd party code is often the preferred way to go. They are well tested and in many cases more able to scale. You get to read someone else's documentation. **And**, you can look at their source code to see how they did it, learning new techniques along the way. Do this after you write your own so that you can compare and contrast...
+Update the state handling for todo items to use `useReducer()` vs separate state management methods
 
 ### Testing
 
 - Tests should assert all behavioral functionality
+- Do a deep mount of the app, and set tests to make assertions on the child components that consume context from the Provider.
+  - Can they see context?
 
 ### Assignment Submission Instructions
 

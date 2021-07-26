@@ -1,4 +1,4 @@
-# Reading - Custom Hooks
+# Reading: Context API - Behaviors
 
 Below you will find some reading material, code samples, and some additional resources that support today's topic and the upcoming lecture.
 
@@ -6,45 +6,19 @@ Review the Submission Instructions for guidance on completing and submitting thi
 
 ## Review, Research, and Discussion
 
-1. What does a component's lifecycle refer to?
-1. Why do you sometimes need to "wrap" functions in `useCallback` when called from within `useEffect`
-1. Why are functional components preferred over class components?
-1. What is wrong with the following code?
+In your reading notes page for this class, provide answers to the following prompts. Cite any external sources
 
-   ```javascript
-   import React, {useState, useEffect} from 'react';
-
-   function MyComponent(props) {
-     const [count, setCount] = useState(0);
-
-     function changeCount(e) {
-       setCount(e.target.value);
-     }
-
-     let renderedItems = []
-
-     for (let i = 0; i < count; i++) {
-       useEffect( () => {
-         console.log('component mount/update');
-       }, [count]);
-
-       renderedItems.push(<div key={i}>Item</div>);
-     }
-
-     return (<div>
-        <input type='number' value={count} onChange={changeCount}/>
-         {renderedItems}
-       </div>);
-   }
-   ```
+1. When you have multiple contexts, what component type should you use (class/function) and why?
+1. What are some good use cases for using the Context API for global state?
+1. How can you best test context?
 
 ### Document the following Vocabulary Terms
 
 | Term                            |
 | ------------------------------- |
-| state hook                      |
-| effect hook                     |
-| reducer hook                    |
+| context                         |
+| useContext()                    |
+| static context                  |
 
 ## Preview
 
@@ -56,15 +30,6 @@ Skim the following materials in preparation for the upcoming lecture. Note the f
 
 ### Preparation Materials
 
-Authoring
-
-- [custom hooks - all you need to know](https://www.telerik.com/blogs/everything-you-need-to-create-a-custom-react-hook){:target="_blank"}
-- [async hooks](https://dev.to/vinodchauhan7/react-hooks-with-async-await-1n9g){:target="_blank"}
-- [useReducer Hook](https://reactjs.org/docs/hooks-reference.html#usereducer){:target="_blank"}
-- [react custom hooks](https://reactjs.org/docs/hooks-custom.html){:target="_blank"}
-
-Hooks Lists/Collections
-
-- [use hooks](https://usehooks.com/){:target="_blank"}
-- [hooks list](https://github.com/rehooks/awesome-react-hooks){:target="_blank"}
-- [10 essential react hooks](https://blog.bitsrc.io/10-react-custom-hooks-you-should-have-in-your-toolbox-aa27d3f5564d){:target="_blank"}
+- [context api](https://reactjs.org/docs/context.html){:target="_blank"}
+- [hooks and context example](https://medium.com/swlh/snackbars-in-react-an-exercise-in-hooks-and-context-299b43fd2a2b){:target="_blank"}
+- [react context links](https://github.com/diegohaz/awesome-react-context){:target="_blank"}

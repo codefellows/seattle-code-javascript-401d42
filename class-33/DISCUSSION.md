@@ -1,4 +1,4 @@
-# Reading: Context API
+# Reading: `<Login />` and `<Auth />`
 
 Below you will find some reading material, code samples, and some additional resources that support today's topic and the upcoming lecture.
 
@@ -8,17 +8,19 @@ Review the Submission Instructions for guidance on completing and submitting thi
 
 In your reading notes page for this class, provide answers to the following prompts. Cite any external sources
 
-1. Describe use cases for `useMemo()` and `useReducer()`
-1. Why do custom hooks need the use prefix?
-1. What do custom hooks usually do?
-1. Using any list of custom hooks, research and name one that you think will be useful in your applications
-1. Describe how a hook that fetches API data might work
+1. Why is the Context API useful?
+1. Can a component outside of a provider get its context?
+1. What are some common use cases for using the Context API?
+1. Describe "Context Hell"
 
 ### Document the following Vocabulary Terms
 
 | Term                            |
 | ------------------------------- |
-| reducer                         |
+| global state                    |
+| global context                  |
+| provider                        |
+| consumer                        |
 
 ## Preview
 
@@ -30,6 +32,6 @@ Skim the following materials in preparation for the upcoming lecture. Note the f
 
 ### Preparation Materials
 
-- [context api](https://reactjs.org/docs/context.html){:target="_blank"}
-- [hooks and context example](https://medium.com/swlh/snackbars-in-react-an-exercise-in-hooks-and-context-299b43fd2a2b){:target="_blank"}
-- [react context links](https://github.com/diegohaz/awesome-react-context){:target="_blank"}
+- [what is role based access control?](https://digitalguardian.com/blog/what-role-based-access-control-rbac-examples-benefits-and-more){:target="_blank"}
+- [react-cookies component](https://www.npmjs.com/package/react-cookies){:target="_blank"}
+- [react-cookie library](https://www.npmjs.com/package/react-cookie){:target="_blank"}
