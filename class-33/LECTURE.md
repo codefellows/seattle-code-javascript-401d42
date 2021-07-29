@@ -1,5 +1,7 @@
 # Class 33: Auth Context and Login Components
 
+[Class Whiteboard](https://projects.invisionapp.com/freehand/document/fuZzvOpkL)
+
 ## Lightening Talk
 
 * Angular JS: Louis
@@ -25,4 +27,10 @@
 
 ## Auth Context
 
+* A Context Provider that defines all the authentication and authorization features of our application.
+
 ## Auth / Auth Components
+
+* Components that Consume the Auth Context, these actually perform the behaviors defined within our Context Provider.
+  * `Login` contains a form that can execute Login, and Logout.
+  * `Auth` contains conditionally rendering logic that will hide and show `children` based on `isAuthorized` and `isAuthenticated`.
