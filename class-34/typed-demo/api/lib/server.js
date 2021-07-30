@@ -2,25 +2,25 @@
 
 const express = require('express');
 const base64 = require('base-64');
-
 const { todos, users } = require('./model/index.js');
-
+require('dotenv').config();
 const app = express();
 app.use(express.json());
-
+console.log(process.env.PORT);
 // define route handlers on the app.
 app.get('/todos', async (req, res) => {
 
   // what operations does this route handler perform?
   //  read from todo data
   let rows = await todos.findAll();
+  console.log(rows);
   res.json(rows);
 });
 
 app.post('/todos', (req, res) => {
 
   //  create todo data
-  
+
 });
 app.put('/todos/:id', (req, res) => {
 
@@ -51,7 +51,10 @@ app.post('/signin', async (req, res) => {
   });
 });
 
+app.listen(process.env.PORT, () => console.log('app is running'));
 
 module.exports = {
   app: app,
+//   start: (PORT) => {
+// }
 }

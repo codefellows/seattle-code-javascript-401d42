@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node ./lib/server.js",
     "test": "jest --verbose --watch"
   },
   "author": "",
@@ -16,6 +17,7 @@
     "jest": "^27.0.6",
     "jsonwebtoken": "^8.5.1",
     "pg": "^8.7.1",
+    "react": "^17.0.2",
     "sequelize": "^6.6.5",
     "sqlite3": "^5.0.2",
     "supertest": "^6.1.4"
