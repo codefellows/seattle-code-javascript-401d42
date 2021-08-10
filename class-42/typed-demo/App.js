@@ -22,6 +22,7 @@ export default function App() {
     getContacts();
   }, []);
 
+  // function that can use Device linking to call a contact.
   function call(person) {
     const phoneNumber = person.phoneNumbers[0].digits;
     const link = `tel:${phoneNumber}`;
@@ -32,6 +33,19 @@ export default function App() {
       .catch(console.error);
   }
 
+  // Component for Rendering formatted children on a Card
+  const CardHeader = ({ children }) => (
+    <View style={{
+      flexDirection: 'row',
+      justifyContent: 'flex-start',
+      alignItems: 'center',
+      padding: 5,
+    }}>
+      {children}
+    </View>
+  )
+
+  // Component for rendering Total Contact Contents.
   const ContactCard = ({ contact }) => {
 
     let first = '';
@@ -43,16 +57,29 @@ export default function App() {
       last = contact.lastName[0];
     }
 
+    let styles = StyleSheet.create({
+      avatar: {
+        margin: 10,
+        backgroundColor: 'rgba(0, 0, 0, 0.6)'
+      },
+    });
+
     return (
-      <Card style={styles.card}>
-        <Avatar
-          size="small"
-          title="BP"
-          onPress={() => console.log("Works!")}
-        />
-        <Text>{contact.name}</Text>
+      <Card>
+        <CardHeader>
+          <Avatar
+            containerStyle={styles.avatar}
+            rounded
+            size="large"
+            title={`${first}${last}`}
+            icon={{name: 'user'}}
+            onPress={() => console.log("Works!")}
+          />
+          <Text h4>{contact.name}</Text>
+        </CardHeader>
         <Icon.Button
           name="phone"
+          size={30}
           onPress={() => call(contact)}>
             {contact.phoneNumbers[0].number}
         </Icon.Button>
